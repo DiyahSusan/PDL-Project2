@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: postgres_db
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: secretpassword
+      POSTGRES_DB: ecommerce
+    ports:
+      - "5432:5432"
+    restart: always
+
+  scylladb:
+    image: scylladb/scylla:latest
+    container_name: scylla_db
+    ports:
+      - "9042:9042"
+    restart: always
+
+  mongodb:
+    image: mongo:latest
+    container_name: mongo_db
+    ports:
+      - "27017:27017"
+    restart: always
